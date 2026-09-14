@@ -6,6 +6,11 @@ def main():
     #intialize pygame
     pygame.init()
 
+    # dt /clock and /fps 
+    clock = pygame.time.Clock()
+    dt = 0.0
+
+
     # set gui window
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 
@@ -19,6 +24,8 @@ def main():
                 return
         screen.fill("black")
         pygame.display.flip()
+        dt = clock.tick(60) / 1000
+        
 
 
     # console print statements 
