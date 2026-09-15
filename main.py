@@ -52,11 +52,19 @@ def main():
             if event.type == pygame.QUIT:
                 return
         updatable.update(dt)
+        # player - asteroid collision check
         for asteroid in asteroids:
             if player.collides_with(asteroid):
                 log_event("player_hit")
                 print(f"Game over!")
                 sys.exit()
+        # asteroid - shot collision check
+        for asteroid in asteroids:
+            for shot in shots:
+                if shot.collides_with(asteroid):
+                    log_event("asteroid_shot")
+                    shot.kill()
+                    asteroid.split()
         screen.fill("black")
         for draws in drawable:
             draws.draw(screen)
